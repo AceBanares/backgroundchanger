@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- saved from url=(0169)https://gc.blackboard.com/bbcswebdav/pid-4482893-dt-content-rid-26506274_1/courses/COMP1073-19S-30708/COMP1073-19S-30708_ImportedContent_20190427122235/lab-5%281%29.html -->
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- <link href="./Lab 5 _ COMP1073 Client-Side JavaScript_files/styles.css" rel="stylesheet"> -->
+    <style>
+      html {
+        font-family: sans-serif;
+        font-size: 200%;
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+        transition-property: background-color;
+        transition-duration: 0.25s;
+        margin: 5%;
+        opacity: 0.9;
+      }
+	</style>
+	
+    <title>Lab 5 Challenge | COMP1073 Client-Side JavaScript</title>
+  </head>
+
+  <!-- This HTML file is formatted using "Prettier - Code formatter" by Esben Petersen (esbenp.prettier-vscode) -->
+
+  <body style="border-radius: 15px;">
+    <div class="card border-dark mb-3" style="max-width:100%; margin: auto;">
+      <div class="card-header"><h1>Lab 5 Challenge</h1></div>
+      <div class="card-body text-dark">
+        <h5 class="card-title">Background Changer</h5>
+        <p class="card-text">
+          This script will enable the user to adjust the below range input
+          elements to modify the
+          <abbr title="Red, Green, Blue">RGB</abbr> values of the
+          <code>background-color</code> CSS property of the HTML element.
+        </p>
+        <label for="red">Red</label>
+        <input
+          data-colour="red"
+          id="red"
+          type="range"
+          min="0"
+          max="255"
+          value="0"
+        />
+        <label for="green">Green</label>
+        <input
+          data-colour="green"
+          id="green"
+          type="range"
+          min="0"
+          max="255"
+          value="0"
+        />
+        <label for="blue">Blue</label>
+        <input
+          data-colour="blue"
+          id="blue"
+          type="range"
+          min="0"
+          max="255"
+          value="0"
+        />
+      </div>
+    </div>
+
+    <script>
+      // Set a variable for changing the background of the page (html)
+      var pageBg = document.querySelector("html");
+      // Use the spread operator to convert the sliders to an array of objects
+      var sliders = [...document.querySelectorAll("input")];
+      // Set an array of object for holding the slider values
+      var rgb = { red: 0, green: 0, blue: 0 };
+
+      // Map the sliders array to execute an anonymous function that is triggered by changing the value of any slider
+      sliders.map(slider =>
+        slider.addEventListener("change", function() {
+          // Set the value of a colour object in the rgb array based on the value of the changed slider (this)
+          rgb[this.dataset.colour] = this.value;
+          //   Set the background colour of the page using ES6 style to populate the values from the rgb array
+          pageBg.style.backgroundColor = `rgb(
+			  ${rgb.red},
+			  ${rgb.green},
+			  ${rgb.blue})`;
+        })
+      );
+
+      // This page inspired by https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values
+    </script>
+  </body>
+</html>
